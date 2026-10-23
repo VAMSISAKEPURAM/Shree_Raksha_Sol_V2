@@ -5,12 +5,22 @@ import pymysql
 import json
 import os
 
+# Load optional .env file if present
+env_file = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(env_file):
+    with open(env_file, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith('#') and '=' in line:
+                k, v = line.split('=', 1)
+                os.environ.setdefault(k.strip(), v.strip())
+
 DB_CONFIG = {
-    'host': '127.0.0.1',
-    'port': 3306,
-    'user': 'root',
-    'password': 'Vamsi@232',
-    'database': 'shreeraksha_db',
+    'host': os.environ.get('DB_HOST', '127.0.0.1'),
+    'port': int(os.environ.get('DB_PORT', 3306)),
+    'user': os.environ.get('DB_USER', 'root'),
+    'password': os.environ.get('DB_PASSWORD', 'Vamsi@232'),
+    'database': os.environ.get('DB_NAME', 'shreeraksha_db'),
     'charset': 'utf8mb4',
     'autocommit': True,
     'cursorclass': pymysql.cursors.DictCursor
