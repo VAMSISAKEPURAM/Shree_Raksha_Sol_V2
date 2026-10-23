@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="180" height="52">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="50%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <filter id="badgeShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="2" stdDeviation="1.5" flood-color="#0f172a" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  
+  <g filter="url(#badgeShadow)">
+    <!-- Stylized Artistic Kannada Script Emblem "ಶ್ರೀರಾಮ್" / Shreeraksha Inscription Badge -->
+    <path d="M 25 45 C 20 20, 45 15, 60 25 C 75 12, 105 15, 115 32 C 125 12, 155 12, 170 30 C 185 15, 215 15, 230 35 C 245 20, 265 30, 260 55 C 255 75, 220 72, 195 65 C 180 75, 140 75, 120 62 C 100 75, 60 75, 40 65 C 20 60, 15 50, 25 45 Z" 
+          fill="url(#goldGrad)" stroke="#1e3a8a" stroke-width="3" stroke-linejoin="round"/>
+          
+    <!-- Decorative calligraphy strokes -->
+    <path d="M 40 38 Q 65 22 90 35 Q 115 20 140 35 Q 165 20 190 35 Q 215 22 240 40" 
+          fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+          
+    <text x="140" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">
+      ಶ್ರೀರಾಮ್
+    </text>
+  </g>
+</svg>

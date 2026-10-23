@@ -1,0 +1,419 @@
+/* ==========================================================================
+   ZOHO INVOICE - PRINT & PDF EXPORT STYLESHEET
+   ========================================================================== */
+
+@media print {
+  /* Hide non-document chrome */
+  #app-sidebar,
+  .app-header,
+  .detail-toolbar,
+  .detail-bottom-tabs,
+  .split-master-pane,
+  .modal-backdrop,
+  .toast-stack,
+  .search-modal-backdrop,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+
+  body, html, .app-layout, .app-main, .view-content-area, .split-view-container, .split-detail-pane, .detail-content-scroll, .invoice-paper-wrapper {
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    max-height: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .invoice-paper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-height: auto !important;
+  }
+
+  .paper-stamp {
+    opacity: 0.85 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .paper-table th {
+    background-color: #111a28 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .paper-total-row.grand-total,
+  .paper-total-row.balance-due {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Payment Receipt Printing Isolation */
+  body.printing-receipt > *:not(#print-receipt-container) {
+    display: none !important;
+  }
+  body.printing-receipt #print-receipt-container {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  body.printing-receipt .shreeraksha-receipt-slip {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 6mm 8mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    box-sizing: border-box !important;
+  }
+  body.printing-receipt .shreeraksha-receipt-slip * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Allow Modal Print when viewing receipt inside modal */
+  body.modal-open.printing-modal .modal-backdrop {
+    display: block !important;
+    position: static !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+  body.modal-open.printing-modal .modal-dialog {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+  body.modal-open.printing-modal .modal-header,
+  body.modal-open.printing-modal .modal-footer,
+  body.modal-open.printing-modal .no-print {
+    display: none !important;
+  }
+  body.modal-open.printing-modal .app-layout {
+    display: none !important;
+  }
+
+  /* Financial Reports Print Styles */
+  .reports-page .table-card {
+    border: 1px solid #000000 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    overflow: visible !important;
+    page-break-inside: auto !important;
+  }
+  .reports-page .data-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 9pt !important;
+  }
+  .reports-page .data-table th,
+  .reports-page .data-table td {
+    border: 1px solid #000000 !important;
+    padding: 4px 6px !important;
+    color: #000000 !important;
+  }
+  .reports-page .data-table th {
+    background-color: #193440 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .reports-page .badge {
+    border: 1px solid #333333 !important;
+    color: #000000 !important;
+    background: transparent !important;
+  }
+
+  /* Shreeraksha Document Landscape Multi-Page Print Settings */
+  .shreeraksha-document-wrapper {
+    display: block !important;
+    gap: 0 !important;
+    width: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page-break {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .shreeraksha-document {
+    width: 297mm !important;
+    min-width: 297mm !important;
+    max-width: 297mm !important;
+    height: 210mm !important;
+    min-height: 210mm !important;
+    max-height: 210mm !important;
+    padding: 8mm 10mm 8mm 10mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    overflow: hidden !important;
+  }
+
+  .shreeraksha-document:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .sr-brand-img {
+    max-height: 38px !important;
+  }
+
+  .sr-logo-img {
+    max-height: 42px !important;
+  }
+
+  .sr-header-top {
+    margin-bottom: 2mm !important;
+  }
+
+  .sr-document-title {
+    font-size: 18px !important;
+    margin: 1mm 0 2mm 0 !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .sr-meta-table {
+    margin-bottom: 0px !important;
+  }
+
+  .sr-meta-table th {
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+  }
+
+  .sr-meta-table td {
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+  }
+
+  .sr-continued-meta-bar {
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+    margin-bottom: 4mm !important;
+  }
+
+  .sr-items-table {
+    width: 100% !important;
+    table-layout: auto !important;
+    margin-bottom: 2mm !important;
+  }
+
+  .sr-items-table th {
+    padding: 4px 4px !important;
+    font-size: 10px !important;
+  }
+
+  .sr-items-table td {
+    padding: 3.5px 5px !important;
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  .sr-item-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+  }
+
+  .sr-item-specs,
+  .sr-item-hsn {
+    font-size: 9.5px !important;
+    margin-top: 1px !important;
+  }
+
+  .sr-items-table tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .sr-subtotal-table th,
+  .sr-subtotal-row td {
+    padding: 4px 5px !important;
+    font-size: 11px !important;
+  }
+
+  .sr-lower-grid,
+  .sr-total-block,
+  .sr-notes-terms-block {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    margin-top: 2mm !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .sr-left-col,
+  .sr-words-col,
+  .sr-notes-terms-col {
+    flex: 0 0 58% !important;
+    width: 58% !important;
+    max-width: 58% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .sr-right-col,
+  .sr-total-col,
+  .sr-bank-sign-col {
+    flex: 0 0 38% !important;
+    width: 38% !important;
+    max-width: 38% !important;
+    margin-left: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .sr-words-label,
+  .sr-notes-label,
+  .sr-terms-label {
+    font-size: 11px !important;
+    margin-bottom: 1px !important;
+  }
+
+  .sr-words-val {
+    font-size: 11px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
+  }
+
+  .sr-notes-val {
+    font-size: 10.5px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
+  }
+
+  .sr-terms-list {
+    font-size: 9.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  .sr-terms-list li {
+    margin-bottom: 1.5px !important;
+  }
+
+  .sr-rounding-table {
+    margin-bottom: 6px !important;
+  }
+
+  .sr-rounding-table td {
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+  }
+
+  .sr-total-label,
+  .sr-total-val {
+    font-size: 12.5px !important;
+  }
+
+  .sr-bank-box {
+    margin-bottom: 6px !important;
+  }
+
+  .sr-bank-header {
+    padding: 3px 5px !important;
+    font-size: 10px !important;
+  }
+
+  .sr-bank-table {
+    font-size: 10px !important;
+    margin-top: 2px !important;
+  }
+
+  .sr-bank-table td {
+    padding: 1.5px 3px !important;
+  }
+
+  .sr-sign-header {
+    padding: 3px 5px !important;
+    font-size: 10px !important;
+  }
+
+  .sr-sign-body {
+    min-height: 48px !important;
+    height: 48px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .sr-sign-line {
+    margin-bottom: 3px !important;
+  }
+
+  .sr-sign-label {
+    font-size: 10.5px !important;
+  }
+
+  .sr-footer-box {
+    width: 100% !important;
+    border: none !important;
+    border-top: 1.5px solid #000000 !important;
+    padding: 3mm 0 1mm 0 !important;
+    margin-top: auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .sr-footer-left {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .sr-footer-right {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+}
+

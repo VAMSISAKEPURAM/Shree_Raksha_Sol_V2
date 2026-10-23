@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shreeraksha Solutions - GST Invoicing, Quotations & Billing Suite</title>
+  <meta name="description" content="100% Fully Functional Zoho Invoice Replica with exact Shreeraksha GST Quotation, Vendor PO, and Debit/Credit Notes formatting.">
+  
+  <!-- Google Fonts: Rubik (Requested Font Style) & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/invoice-view.css">
+  <link rel="stylesheet" href="css/shreeraksha-template.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="icon" type="image/png" href="assets/shreeraksha-emblem-exact.png">
+</head>
+<body class="theme-zoho">
+  <div id="app-root" class="app-layout">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside id="app-sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-container">
+          <div class="brand-logo-wrap" style="background: transparent; box-shadow: none;">
+            <img id="sidebar-logo" src="assets/shreeraksha-emblem-exact.png" alt="Logo" class="brand-logo" style="object-fit: contain;">
+          </div>
+          <div class="brand-text">
+            <span class="brand-name" id="sidebar-company-name">SHREERAKSHA</span>
+            <span class="brand-badge">SOLUTIONS &bull; GST</span>
+          </div>
+        </div>
+        <button id="sidebar-collapse-btn" class="icon-btn-ghost btn-sm" title="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">CORE</div>
+        <a href="#dashboard" class="nav-item" data-route="dashboard">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          </span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <!-- EXPANDABLE CUSTOMER & VENDOR MENU -->
+        <div class="nav-group-collapsible open" id="nav-group-contacts">
+          <div class="nav-item nav-item-parent" id="nav-contacts-toggle" data-route="customers">
+            <span class="nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span class="nav-label">Customers & Vendors</span>
+            <span class="nav-counter" id="nav-count-customers">0</span>
+            <span class="nav-arrow">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </div>
+          <div class="nav-submenu">
+            <a href="#customers?type=customer" class="nav-sub-item" data-route="customers" data-sub="customer">
+              <span class="nav-sub-dot dot-customer"></span>
+              <span class="nav-label">Customers</span>
+              <span class="nav-counter-sub" id="nav-count-only-customers">0</span>
+            </a>
+            <a href="#customers?type=vendor" class="nav-sub-item" data-route="customers" data-sub="vendor">
+              <span class="nav-sub-dot dot-vendor"></span>
+              <span class="nav-label">Vendors</span>
+              <span class="nav-counter-sub" id="nav-count-only-vendors">0</span>
+            </a>
+            <a href="#customers?type=all" class="nav-sub-item" data-route="customers" data-sub="all">
+              <span class="nav-sub-dot"></span>
+              <span class="nav-label">All Contacts</span>
+            </a>
+          </div>
+        </div>
+        <a href="#items" class="nav-item" data-route="items">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </span>
+          <span class="nav-label">Items & Services (HSN/SAC)</span>
+        </a>
+
+        <div class="nav-section-label">SALES & BILLING (GST)</div>
+        <a href="#quotes" class="nav-item" data-route="quotes">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </span>
+          <span class="nav-label">Quotations</span>
+          <span class="nav-counter" id="nav-count-quotes">0</span>
+        </a>
+        <a href="#invoices" class="nav-item" data-route="invoices">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </span>
+          <span class="nav-label">Tax Invoices</span>
+          <span class="nav-badge-pill" id="nav-badge-overdue" style="display:none;">0 Overdue</span>
+        </a>
+        <a href="#purchase-orders" class="nav-item" data-route="purchase-orders">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </span>
+          <span class="nav-label">Vendor Purchase Orders (PO)</span>
+          <span class="nav-counter" id="nav-count-pos">0</span>
+        </a>
+        <a href="#debit-credit-notes" class="nav-item" data-route="debit-credit-notes">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </span>
+          <span class="nav-label">Debit / Credit Notes</span>
+          <span class="nav-counter" id="nav-count-notes">0</span>
+        </a>
+        <a href="#recurring" class="nav-item" data-route="recurring">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </span>
+          <span class="nav-label">Recurring Invoices</span>
+        </a>
+        <a href="#payments" class="nav-item" data-route="payments">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </span>
+          <span class="nav-label">Payments Received</span>
+        </a>
+
+        <div class="nav-section-label">OPERATIONS</div>
+        <a href="#expenses" class="nav-item" data-route="expenses">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </span>
+          <span class="nav-label">Expenses</span>
+        </a>
+        <a href="#reports" class="nav-item" data-route="reports">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </span>
+          <span class="nav-label">Reports</span>
+        </a>
+        <a href="#settings" class="nav-item" data-route="settings">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="user-avatar" style="background: linear-gradient(135deg, #f59e0b, #b45309);">SR</div>
+          <div class="user-info">
+            <span class="user-name">Shreeraksha Solutions</span>
+            <span class="user-role">GST Compliance Admin</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN APP WRAPPER -->
+    <div class="app-main">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="app-header">
+        <div class="header-left">
+          <button id="mobile-toggle-btn" class="icon-btn-ghost md-hidden" aria-label="Toggle Navigation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          
+          <div class="breadcrumb-trail">
+            <span class="crumb-root">Shreeraksha Suite</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-current" id="header-view-title">Quotations</span>
+          </div>
+        </div>
+
+        <div class="header-center">
+          <div class="search-omnibar" id="global-search-trigger" title="Search Quotes, Customers, HSN, PO (Ctrl + K)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span class="search-placeholder">Search quotations, clients, HSN/SAC, PO...</span>
+            <kbd class="search-shortcut">Ctrl K</kbd>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- QUICK CREATE BUTTON -->
+          <div class="dropdown-wrapper">
+            <button id="quick-create-btn" class="btn btn-primary btn-sm btn-icon-gap">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Quick Create</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="quick-create-menu" class="dropdown-menu">
+              <a href="#" class="dropdown-item" data-action="quick-new-quote">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                <span>New Quotation</span>
+              </a>
+              <a href="#" class="dropdown-item" data-action="quick-new-invoice">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>New Tax Invoice</span>
+              </a>
+              <a href="#" class="dropdown-item" data-action="quick-new-po">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+                <span>New Vendor PO</span>
+              </a>
+              <a href="#" class="dropdown-item" data-action="quick-new-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                <span>New Credit / Debit Note</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item" data-action="quick-new-customer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>New Customer / Vendor</span>
+              </a>
+              <a href="#" class="dropdown-item" data-action="quick-new-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                <span>New Item (Product/Service)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- NOTIFICATION BELL -->
+          <div class="dropdown-wrapper">
+            <button id="notifications-btn" class="icon-btn-ghost" title="Recent Activity">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span class="notification-indicator"></span>
+            </button>
+            <div id="notifications-menu" class="dropdown-menu dropdown-menu-right notifications-panel">
+              <div class="notifications-header">
+                <span class="title">System Activities & Audit</span>
+                <span class="badge badge-sm">Live</span>
+              </div>
+              <div id="notifications-list" class="notifications-list">
+                <!-- Injected dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SPATIAL GLASS TRANSPARENCY / OPACITY SLIDER DOCK (DARK & LIGHT THEMES) -->
+          <div class="glass-transparency-dock" id="glass-transparency-dock" title="Adjust UI & UX Opacity (5% - 100%)">
+            <div class="transparency-icon-wrap" title="Spatial Glass Opacity Control">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" fill-opacity="0.4"/>
+              </svg>
+            </div>
+            <span class="transparency-title">Opacity</span>
+            <div class="slider-track-wrap">
+              <input 
+                type="range" 
+                id="ui-opacity-slider" 
+                class="spatial-glass-slider"
+                min="5" 
+                max="100" 
+                value="30" 
+                step="1"
+                aria-label="UI Glass Opacity Slider"
+                title="Slide to adjust opacity (5% clear glass to 100% solid)"
+              >
+            </div>
+            <button class="transparency-value-pill" id="ui-opacity-badge" title="Current Opacity: 30% (70% Glass). Click to reset to default 30%">
+              30%
+            </button>
+          </div>
+
+          <!-- THEME MODE TOGGLE (DARK / LIGHT GLOW SWITCH) -->
+          <button id="theme-toggle-switch" class="theme-glass-toggle" title="Toggle Light / Dark Mode" aria-label="Toggle Theme">
+            <span class="theme-toggle-slider"></span>
+            <span class="theme-toggle-icon icon-sun" title="Light Mode">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </span>
+            <span class="theme-toggle-icon icon-moon" title="Dark Mode">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+          </button>
+
+          <!-- CURRENCY / ORG BADGE -->
+          <div class="org-pill" id="header-org-pill" title="GSTIN Registered Entity">
+            <span class="org-dot"></span>
+            <span class="org-text" id="header-currency-code">INR (₹) &bull; KA-29</span>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- VIEW RENDER CONTAINER -->
+      <main id="app-view" class="view-content-area">
+        <!-- Views will be mounted here dynamically by Router -->
+        <div class="view-loading-state">
+          <div class="spinner"></div>
+          <p>Loading Shreeraksha GST Suite...</p>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- GLOBAL SEARCH PALETTE MODAL -->
+  <div id="global-search-modal" class="search-modal-backdrop" style="display:none;">
+    <div class="search-modal-card">
+      <div class="search-modal-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="omnisearch-input" placeholder="Type to search quotes, customers, HSN/SAC, PO..." autocomplete="off">
+        <button id="omnisearch-close-btn" class="btn-ghost-sm">Esc</button>
+      </div>
+      <div id="omnisearch-results" class="search-modal-results">
+        <!-- Results rendered here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERIC MODAL MOUNT -->
+  <div id="modal-container"></div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-stack"></div>
+
+  <!-- SCRIPTS -->
+  <script src="js/store.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/timer.js"></script>
+  <script src="js/components/gst-document-template.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/customers.js"></script>
+  <script src="js/views/items.js"></script>
+  <script src="js/views/quotes.js"></script>
+  <script src="js/views/invoices.js"></script>
+  <script src="js/views/purchase-orders.js"></script>
+  <script src="js/views/debit-credit-notes.js"></script>
+  <script src="js/views/recurring.js"></script>
+  <script src="js/views/payments.js"></script>
+  <script src="js/views/expenses.js"></script>
+  <script src="js/views/time-tracking.js"></script>
+  <script src="js/lib/xlsx.full.min.js"></script>
+  <script src="js/views/reports.js"></script>
+  <script src="js/views/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

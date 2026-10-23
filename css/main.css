@@ -1,0 +1,465 @@
+/* ==========================================================================
+   ZOHO INVOICE - CORE DESIGN SYSTEM & TOKENS
+   Palette: #BAC8D9, #19340 (#193440 deep slate), #9BF272 & #7ABF5A
+   Typography: "Rubik" non-bold style
+   Font Colors: Light theme = Black/Dark color | Dark theme = Light/White colors
+   ========================================================================== */
+
+/* Dynamic Theme Colors & Spatial Glassmorphism Tokens */
+:root, body.theme-dark {
+  /* Requested Color Palette */
+  --palette-slate: #BAC8D9;
+  --palette-dark: #193440;
+  --palette-lime: #9BF272;
+  --palette-sage: #7ABF5A;
+
+  /* Brand Accents */
+  --primary: #193440;
+  --primary-hover: #224757;
+  --primary-light: rgba(186, 200, 217, 0.16);
+  --primary-border: rgba(186, 200, 217, 0.32);
+  --primary-dark: #10222b;
+  --primary-glow: rgba(155, 242, 114, 0.45);
+
+  --secondary: #9BF272;
+  --secondary-hover: #8be660;
+  --secondary-glow: rgba(155, 242, 114, 0.45);
+  --secondary-light: rgba(155, 242, 114, 0.16);
+
+  /* Spatial Dark Glass Surfaces (70% Transparency - 0.30 Alpha) */
+  --bg-app: #10222b;
+  --surface: rgba(25, 52, 64, 0.30);
+  --surface-card: rgba(20, 44, 55, 0.30);
+  --surface-muted: rgba(186, 200, 217, 0.08);
+  --surface-hover: rgba(155, 242, 114, 0.18);
+  --border-light: rgba(186, 200, 217, 0.22);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(155, 242, 114, 0.50);
+  
+  /* Text & Typography: Light or White colors for Dark Theme */
+  --text-main: #ffffff;
+  --text-secondary: #BAC8D9;
+  --text-muted: #8ea4bb;
+  --text-inverse: #193440;
+
+  /* Glass Sidebar (70% Transparency - 0.30 Opacity) */
+  --sidebar-bg: rgba(20, 44, 55, 0.30);
+  --sidebar-border: rgba(186, 200, 217, 0.20);
+  --sidebar-hover: rgba(186, 200, 217, 0.12);
+  --sidebar-active: linear-gradient(90deg, rgba(155, 242, 114, 0.28) 0%, rgba(122, 191, 90, 0.16) 100%);
+  --sidebar-active-accent: #9BF272;
+  --sidebar-text: #BAC8D9;
+  --sidebar-text-hover: #ffffff;
+  --sidebar-text-active: #9BF272;
+  --sidebar-label: #9BF272;
+  --header-bg: rgba(20, 44, 55, 0.30);
+
+  /* Enhanced Spatial Glassmorphism Filters & Specular Glow */
+  --glass-blur: blur(30px) saturate(190%);
+  --glass-border: 1px solid rgba(186, 200, 217, 0.25);
+  --glass-glow: 0 0 28px rgba(155, 242, 114, 0.28), 0 0 14px rgba(186, 200, 217, 0.24);
+  --shadow-paper: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(186, 200, 217, 0.16);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(155, 242, 114, 0.18);
+  --shadow-xl: 0 28px 56px -12px rgba(0, 0, 0, 0.6), 0 0 32px rgba(155, 242, 114, 0.25);
+
+  /* Semantic Status Colors */
+  --color-paid: #9BF272;
+  --color-paid-bg: rgba(155, 242, 114, 0.18);
+  --color-paid-border: rgba(155, 242, 114, 0.45);
+
+  --color-sent: #7ABF5A;
+  --color-sent-bg: rgba(122, 191, 90, 0.18);
+  --color-sent-border: rgba(122, 191, 90, 0.45);
+
+  --color-draft: #BAC8D9;
+  --color-draft-bg: rgba(186, 200, 217, 0.15);
+  --color-draft-border: rgba(186, 200, 217, 0.3);
+
+  --color-overdue: #f87171;
+  --color-overdue-bg: rgba(248, 113, 113, 0.18);
+  --color-overdue-border: rgba(248, 113, 113, 0.4);
+
+  --color-partial: #fbbf24;
+  --color-partial-bg: rgba(251, 191, 36, 0.18);
+  --color-partial-border: rgba(251, 191, 36, 0.45);
+
+  --color-void: #64748b;
+  --color-void-bg: rgba(100, 116, 139, 0.18);
+  --color-void-border: rgba(100, 116, 139, 0.28);
+
+  /* Body Mesh Gradient (Dark Theme): Deep Slate #193440, Soft Slate #BAC8D9, Lime #9BF272 & Sage #7ABF5A */
+  --bg-gradient-mesh:
+    radial-gradient(ellipse 950px 750px at 85% 8%, rgba(255, 255, 255, 0.12) 0%, rgba(186, 200, 217, 0.05) 25%, transparent 50%),
+    radial-gradient(circle 550px at 10% 88%, rgba(155, 242, 114, 0.14) 0%, transparent 45%),
+    radial-gradient(ellipse 900px 700px at 18% 22%, rgba(122, 191, 90, 0.20) 0%, rgba(155, 242, 114, 0.08) 35%, transparent 65%),
+    radial-gradient(ellipse 800px 650px at 80% 75%, rgba(186, 200, 217, 0.14) 0%, transparent 55%),
+    radial-gradient(circle 750px at 50% 50%, rgba(25, 52, 64, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, #10222b 0%, #193440 35%, #152c36 70%, #0d1b22 100%);
+}
+
+/* Light Theme Variables */
+body.theme-light {
+  /* Requested Color Palette */
+  --palette-slate: #BAC8D9;
+  --palette-dark: #193440;
+  --palette-lime: #9BF272;
+  --palette-sage: #7ABF5A;
+
+  /* Brand Accents */
+  --primary: #193440;
+  --primary-hover: #10222b;
+  --primary-light: rgba(186, 200, 217, 0.25);
+  --primary-border: rgba(186, 200, 217, 0.6);
+  --primary-dark: #0a171d;
+  --primary-glow: rgba(122, 191, 90, 0.35);
+
+  --secondary: #7ABF5A;
+  --secondary-hover: #69a74c;
+  --secondary-glow: rgba(122, 191, 90, 0.4);
+  --secondary-light: rgba(155, 242, 114, 0.2);
+
+  /* Liquid Glass Light Surfaces (70% Transparency - 0.30 Alpha) */
+  --bg-app: #cfd9e4;
+  --surface: rgba(255, 255, 255, 0.40);
+  --surface-card: rgba(255, 255, 255, 0.45);
+  --surface-muted: rgba(186, 200, 217, 0.28);
+  --surface-hover: rgba(255, 255, 255, 0.65);
+  --border-light: rgba(255, 255, 255, 0.85);
+  --border-subtle: rgba(186, 200, 217, 0.45);
+  --border-strong: #193440;
+
+  /* Text & Typography: Black / Dark color for Light Theme */
+  --text-main: #000000;
+  --text-secondary: #193440;
+  --text-muted: #3a4d5f;
+  --text-inverse: #ffffff;
+
+  /* Liquid Glass Sidebar (70% Transparency - 0.30 Opacity) */
+  --sidebar-bg: rgba(255, 255, 255, 0.35);
+  --sidebar-border: rgba(255, 255, 255, 0.75);
+  --sidebar-hover: rgba(255, 255, 255, 0.55);
+  --sidebar-active: linear-gradient(90deg, rgba(155, 242, 114, 0.35) 0%, rgba(186, 200, 217, 0.30) 100%);
+  --sidebar-active-accent: #7ABF5A;
+  --sidebar-text: #193440;
+  --sidebar-text-hover: #000000;
+  --sidebar-text-active: #000000;
+  --sidebar-label: #193440;
+  --header-bg: rgba(255, 255, 255, 0.40);
+
+  /* Liquid Glass Refraction & Prominent Visible Shadows */
+  --glass-blur: blur(32px) saturate(210%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.90);
+  --glass-glow: 0 8px 32px rgba(122, 191, 90, 0.24), 0 0 16px rgba(255, 255, 255, 0.90);
+  --shadow-paper: 0 18px 46px rgba(16, 34, 43, 0.22), 0 4px 14px rgba(25, 52, 64, 0.15), inset 0 1.5px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 2px rgba(186, 200, 217, 0.35);
+  --shadow-lg: 0 16px 34px rgba(16, 34, 43, 0.20), 0 4px 12px rgba(25, 52, 64, 0.12), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.90);
+  --shadow-xl: 0 28px 60px -8px rgba(16, 34, 43, 0.28), 0 8px 24px rgba(25, 52, 64, 0.18), inset 0 2px 3px rgba(255, 255, 255, 0.95);
+
+  /* Semantic Status Colors */
+  --color-paid: #2e7d32;
+  --color-paid-bg: #e8f5e9;
+  --color-paid-border: #a5d6a7;
+
+  --color-sent: #193440;
+  --color-sent-bg: rgba(186, 200, 217, 0.35);
+  --color-sent-border: #BAC8D9;
+
+  --color-draft: #475a6c;
+  --color-draft-bg: #edf2f7;
+  --color-draft-border: #cbd5e1;
+
+  --color-overdue: #c62828;
+  --color-overdue-bg: #ffebee;
+  --color-overdue-border: #ef9a9a;
+
+  --color-partial: #b45309;
+  --color-partial-bg: #fef3c7;
+  --color-partial-border: #fcd34d;
+
+  --color-void: #475569;
+  --color-void-bg: #f1f5f9;
+  --color-void-border: #cbd5e1;
+
+  /* Body Mesh Gradient (Light Theme): Darker richer metallic slate & sage depth */
+  --bg-gradient-mesh:
+    radial-gradient(ellipse 1000px 800px at 15% 10%, rgba(186, 200, 217, 0.70) 0%, rgba(207, 217, 228, 0.85) 45%, transparent 75%),
+    radial-gradient(circle 700px at 85% 90%, rgba(186, 200, 217, 0.60) 0%, rgba(195, 208, 222, 0.75) 40%, transparent 70%),
+    radial-gradient(ellipse 850px 650px at 80% 18%, rgba(25, 52, 64, 0.16) 0%, rgba(186, 200, 217, 0.40) 40%, transparent 70%),
+    radial-gradient(circle 750px at 18% 80%, rgba(155, 242, 114, 0.22) 0%, transparent 60%),
+    radial-gradient(circle 800px at 50% 45%, rgba(122, 191, 90, 0.18) 0%, transparent 60%),
+    linear-gradient(135deg, #c2d0dd 0%, #cfd9e4 25%, #bccddc 50%, #c9d5e1 75%, #b6c8d7 100%);
+}
+
+:root {
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Font stacks: Rubik Style (Non-bold) */
+  --font-sans: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Rubik', var(--font-sans);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Resets & Non-Bold Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: 400; /* Requirement: Font should not be bold */
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 16px; /* Comfortable medium-large base font size */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-main);
+  background-color: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Strict Non-Bold Override across all elements */
+h1, h2, h3, h4, h5, h6,
+b, strong, th,
+.font-bold, .font-semibold,
+.table-title, .kpi-value, .brand-name,
+.sr-document-title, .modal-title {
+  font-weight: 500 !important; /* Elegant medium weight instead of heavy 700/800/900 */
+}
+
+p, span, div, a, button, input, select, textarea, td, label, .form-label, .btn, .nav-item {
+  font-weight: 400 !important;
+}
+
+/* Universal High-Contrast Dark Dropdown Lists (Dark background + Lighter text) */
+select,
+.input-select {
+  color-scheme: dark !important;
+}
+
+select option,
+.input-select option,
+optgroup {
+  background-color: #10222b !important; /* Dark background */
+  color: #f1f5f9 !important; /* Lighter text for high readability */
+}
+
+select option:checked,
+.input-select option:checked,
+select option:hover,
+.input-select option:hover {
+  background-color: #193440 !important;
+  color: #9BF272 !important; /* Lighter neon lime */
+}
+
+/* Customer & Party Name Links: Light font in Dark Theme, Black in Light Theme */
+.customer-name-link {
+  color: var(--text-main) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  cursor: pointer;
+}
+.customer-name-link:hover {
+  color: var(--secondary) !important;
+  text-decoration: underline;
+}
+
+/* Top-level Layout Grid with Pure White / Slate / Lime & Sage Mesh */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg-gradient-mesh);
+  background-attachment: fixed;
+  transition: background 0.4s ease;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.view-content-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1.5rem 2rem;
+  background-color: transparent;
+  position: relative;
+}
+
+/* Loading Spinner */
+.view-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollbar Polish */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Utility Helpers */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+
+.font-bold { font-weight: 500; }
+.font-semibold { font-weight: 500; }
+.font-medium { font-weight: 500; }
+
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; font-family: var(--font-heading); }
+
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-primary { color: var(--primary); }
+.text-success { color: var(--color-paid); }
+.text-danger { color: var(--color-overdue); }
+.text-warning { color: var(--color-partial); }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+/* ==========================================================================
+   LIQUID GLASS DESIGN SYSTEM (LIGHT THEME)
+   High clarity water glass refraction, specular rim reflections & 70% transparency
+   ========================================================================== */
+body.theme-light .table-card,
+body.theme-light .kpi-card,
+body.theme-light .glass-capsule-dock,
+body.theme-light .sidebar,
+body.theme-light .app-header,
+body.theme-light .modal-dialog,
+body.theme-light .search-modal-card {
+  background-color: var(--surface-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-paper);
+}
+
+body.theme-light .sidebar {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid rgba(255, 255, 255, 0.70);
+  box-shadow: 4px 0 24px rgba(25, 52, 64, 0.05), inset -1px 0 1.5px rgba(255, 255, 255, 0.95);
+}
+
+body.theme-light .app-header {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.70);
+  box-shadow: 0 4px 24px rgba(25, 52, 64, 0.05), inset 0 -1px 1.5px rgba(255, 255, 255, 0.95);
+}
+
+body.theme-light .kpi-card {
+  box-shadow: 0 10px 28px rgba(25, 52, 64, 0.06), inset 0 1.5px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 2px rgba(186, 200, 217, 0.20);
+}
+
+body.theme-light .kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(25, 52, 64, 0.09), inset 0 2px 2.5px rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+body.theme-light .table-header-toolbar {
+  background-color: var(--surface);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.60);
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.90);
+}
+
+body.theme-light .glass-capsule-dock {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px rgba(25, 52, 64, 0.07), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+}
+
+body.theme-light .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 2px 8px rgba(25, 52, 64, 0.05), inset 0 1px 1.5px rgba(255, 255, 255, 0.90);
+  color: #193440;
+}
+
+body.theme-light .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.65);
+  border-color: #7ABF5A;
+  color: #193440;
+  box-shadow: 0 4px 16px rgba(122, 191, 90, 0.25), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+/* SPATIAL GLASS DESIGN (DARK THEME - 70% TRANSPARENCY) */
+body.theme-dark .table-card,
+body.theme-dark .kpi-card,
+body.theme-dark .glass-capsule-dock,
+body.theme-dark .sidebar,
+body.theme-dark .app-header,
+body.theme-dark .modal-dialog,
+body.theme-dark .search-modal-card {
+  background-color: var(--surface-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+}
+
