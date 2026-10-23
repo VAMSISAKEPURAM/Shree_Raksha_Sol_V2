@@ -188,7 +188,7 @@
               </label>
 
               <button class="btn btn-outline btn-icon-gap" style="color: var(--color-overdue); border-color: var(--border-light);" onclick="window.SettingsView.resetDemo()">
-                <span>Reset to Seed Demo Data</span>
+                <span>Reset to Clean State</span>
               </button>
             </div>
           </div>
@@ -335,12 +335,12 @@
 
     resetDemo() {
       window.Modal.confirm({
-        title: 'Reset to Demo Data',
-        message: 'This will replace all current data with the initial Zoho sample dataset. Are you sure?',
+        title: 'Reset to Clean State',
+        message: 'This will clear all transactions, customers, vendors, and products, returning the application to a clean production slate. Are you sure?',
         danger: true,
         onConfirm: () => {
           window.AppStore.resetToDemo();
-          window.Toast.show('Database reset to fresh demo data.', 'info');
+          window.Toast.show('Application reset to clean state.', 'info');
           window.location.hash = '#dashboard';
           window.location.reload();
         }

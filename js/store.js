@@ -50,513 +50,18 @@
       { id: 'tax-28', name: 'GST 28%', rate: 28.0 },
       { id: 'tax-0',  name: 'Zero Tax 0%', rate: 0.0 }
     ],
-    items: [
-      {
-        id: 'item-1',
-        name: 'ZODIAC C18',
-        itemType: 'product',
-        hsnCode: '90279090',
-        sacCode: '',
-        sku: 'ZOD-C18-250',
-        rate: 39286.00,
-        unit: 'nos',
-        taxRate: 18.0,
-        taxRateId: 'tax-18',
-        description: '250mmx4.6mm, 5µm'
-      },
-      {
-        id: 'item-2',
-        name: 'ZODIAC C18',
-        itemType: 'product',
-        hsnCode: '90279090',
-        sacCode: '',
-        sku: 'ZOD-C18-150',
-        rate: 39286.00,
-        unit: 'nos',
-        taxRate: 18.0,
-        taxRateId: 'tax-18',
-        description: '150mmx4.6mm, 3.5µm'
-      },
-      {
-        id: 'item-3',
-        name: 'Hypersil BDS C18',
-        itemType: 'product',
-        hsnCode: '90279090',
-        sacCode: '',
-        sku: 'HYP-BDS-250',
-        rate: 67778.00,
-        unit: 'nos',
-        taxRate: 18.0,
-        taxRateId: 'tax-18',
-        description: '250mm x 4.6mm, 5µm'
-      },
-      {
-        id: 'item-4',
-        name: 'Chromatography Column Annual Calibration & Validation',
-        itemType: 'service',
-        hsnCode: '',
-        sacCode: '998313',
-        sku: 'SRV-CALIB-01',
-        rate: 25000.00,
-        unit: 'service',
-        taxRate: 18.0,
-        taxRateId: 'tax-18',
-        description: 'Onsite HPLC system calibration, resolution verification, and certificate issuance.'
-      },
-      {
-        id: 'item-5',
-        name: 'HPLC Method Development & Resolution Optimization',
-        itemType: 'service',
-        hsnCode: '',
-        sacCode: '998319',
-        sku: 'SRV-METH-02',
-        rate: 45000.00,
-        unit: 'service',
-        taxRate: 18.0,
-        taxRateId: 'tax-18',
-        description: 'Custom mobile phase formulation, retention factor analysis, and peak purity report.'
-      }
-    ],
-    customers: [
-      {
-        id: 'cust-1',
-        name: 'Manipal Speciality Chemicals Pvt Ltd',
-        company: 'Manipal Speciality Chemicals Pvt Ltd',
-        attention: 'Mr. Sreekar Nayak',
-        email: 'sreekar.nayak@manipalspeciality.com',
-        phone: '+91 820 257 1200',
-        taxId: '29AATCM4200G1ZD',
-        placeOfSupply: 'Karnataka (29)',
-        currency: 'INR',
-        billingAddress: '52/1A, Udayavani Building,Tile Factory Road, Manipal\nUdupi, Karnataka, India 576104',
-        shippingAddress: '52/1A, Udayavani Building,Tile Factory Road, Manipal\nUdupi, Karnataka, India 576104',
-        paymentTerms: '30 Days net',
-        notes: 'Kind Attention: Mr. Sreekar Nayak. Priority pharmaceutical delivery.'
-      },
-      {
-        id: 'cust-2',
-        name: 'Sun Pharma Advanced Research Ltd',
-        company: 'Sun Pharma Advanced Research Ltd',
-        attention: 'Dr. Ananya Sharma',
-        email: 'procurement@sunpharma.res.in',
-        phone: '+91 22 6645 5600',
-        taxId: '27AAACS1234D1Z2',
-        placeOfSupply: 'Maharashtra (27)', // Inter-state testing!
-        currency: 'INR',
-        billingAddress: 'Plot No 14, MIDC Industrial Area, Taloja\nNavi Mumbai, Maharashtra, India 410208',
-        shippingAddress: 'Plot No 14, MIDC Industrial Area, Taloja\nNavi Mumbai, Maharashtra, India 410208',
-        paymentTerms: '30 Days net',
-        notes: 'Inter-state client. IGST applies automatically.'
-      },
-      {
-        id: 'vend-1',
-        name: 'Thermo Fisher Scientific India Pvt Ltd',
-        company: 'Thermo Fisher Scientific India Pvt Ltd',
-        attention: 'Mr. Rajesh Pillai',
-        isVendor: true,
-        email: 'orders.india@thermofisher.com',
-        phone: '+91 20 6626 7000',
-        taxId: '27AAACT9921B1Z9',
-        placeOfSupply: 'Maharashtra (27)',
-        currency: 'INR',
-        billingAddress: 'Godrej Millennium, 9 Koregaon Park Road\nPune, Maharashtra, India 411001',
-        shippingAddress: 'Godrej Millennium, 9 Koregaon Park Road\nPune, Maharashtra, India 411001',
-        paymentTerms: 'Net 30',
-        notes: 'Primary chromatography consumables vendor.'
-      }
-    ],
-    estimates: [
-      {
-        id: 'est-019',
-        number: 'SHRKS/Qtn/26-27/019',
-        customerId: 'cust-1',
-        attention: 'Mr. Sreekar Nayak',
-        date: '2026-10-03',
-        expiryDate: '2026-12-31',
-        placeOfSupply: 'Karnataka (29)',
-        status: 'accepted',
-        reference: '',
-        paymentTerms: '30 Days net',
-        items: [
-          {
-            itemId: 'item-1',
-            name: 'ZODIAC C18',
-            description: '250mmx4.6mm, 5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 6.00,
-            rate: 39286.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-2',
-            name: 'ZODIAC C18',
-            description: '150mmx4.6mm, 3.5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 3.00,
-            rate: 39286.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-3',
-            name: 'Hypersil BDS C18',
-            description: '250mm x 4.6mm, 5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 1.00,
-            rate: 67778.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          }
-        ],
-        notes: 'Order to be placed on "Shreeraksha Solutions" & Below Address mentioned',
-        terms: '• Above prices are FOR Destination.\n• Please mention our Estimate number on all future correspondence.\n• Please share your valid GSTIN in your Purchase Order.\n• Payment Terms: As agreed (30 Days net).\n• In case of Refurbished requirement\n  * The defective part need to be returned - against delivery.\n• Delivery will be within 3-4 weeks from date of PO.\n  * Goods indicated above in stock are accurate as of the quote date.\n  * If goods are out of stock at the time of release of PO, standard lead time would apply.\n• Payment will be 50% advance and balance against delivery.'
-      },
-      {
-        id: 'est-020',
-        number: 'SHRKS/Qtn/26-27/020',
-        customerId: 'cust-2',
-        attention: 'Dr. Ananya Sharma',
-        date: '2026-10-10',
-        expiryDate: '2026-11-30',
-        placeOfSupply: 'Maharashtra (27)', // Inter-state demonstration
-        status: 'sent',
-        reference: 'SUN-RFQ-9921',
-        paymentTerms: '30 Days net',
-        items: [
-          {
-            itemId: 'item-4',
-            name: 'Chromatography Column Annual Calibration & Validation',
-            description: 'Validation of 4 Waters Alliance HPLC Systems',
-            itemType: 'service',
-            hsnCode: '',
-            sacCode: '998313',
-            quantity: 2.00,
-            rate: 25000.00,
-            discountType: 'amount', // Testing flat amount discount
-            discount: 2000.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-3',
-            name: 'Hypersil BDS C18',
-            description: '250mm x 4.6mm, 5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 2.00,
-            rate: 67778.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          }
-        ],
-        notes: 'Inter-State supply to Maharashtra. Full 18% IGST is applicable as per GST regulations.',
-        terms: 'Payment 30 Days Net from date of installation.'
-      },
-      {
-        id: 'est-024',
-        number: 'SHRKS/Qtn/26-27/024',
-        customerId: 'cust-1',
-        attention: 'Mr. Sreekar Nayak',
-        date: '2026-10-15',
-        expiryDate: '2026-12-31',
-        placeOfSupply: 'Karnataka (29)',
-        status: 'draft',
-        reference: 'PUR-RFQ-8840',
-        paymentTerms: '30 Days net',
-        items: [
-          {
-            itemId: 'item-1',
-            name: 'ZODIAC C18 Analytical Column',
-            description: '250mm x 4.6mm, 5µm particle size, 120Å pore size',
-            itemType: 'product',
-            hsnCode: '90279090',
-            quantity: 6.00,
-            unit: "No's",
-            rate: 39286.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-2',
-            name: 'ZODIAC C18 Fast LC Column',
-            description: '150mm x 4.6mm, 3.5µm high-resolution',
-            itemType: 'product',
-            hsnCode: '90279090',
-            quantity: 3.00,
-            unit: "No's",
-            rate: 39286.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-3',
-            name: 'Hypersil BDS C18 Premium Column',
-            description: '250mm x 4.6mm, 5µm base-deactivated silica',
-            itemType: 'product',
-            hsnCode: '90279090',
-            quantity: 1.00,
-            unit: 'Pcs',
-            rate: 67778.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-1',
-            name: 'Waters Symmetry C8 Column',
-            description: '150mm x 3.9mm, 5µm pharmaceutical grade',
-            itemType: 'product',
-            hsnCode: '90279090',
-            quantity: 2.00,
-            unit: "No's",
-            rate: 45000.00,
-            discountType: 'percent',
-            discount: 10.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-2',
-            name: 'Kromasil 100-5-C18 Column',
-            description: '250mm x 4.6mm, 5µm analytical chemistry column',
-            itemType: 'product',
-            hsnCode: '90279090',
-            quantity: 2.00,
-            unit: "No's",
-            rate: 42500.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-4',
-            name: 'HPLC Column Protection Guard Cartridges',
-            description: 'Pack of 5 universal 10mm cartridge guards',
-            itemType: 'product',
-            hsnCode: '90279090',
-            quantity: 1.00,
-            unit: 'Sets',
-            rate: 18500.00,
-            discountType: 'amount',
-            discount: 500.00,
-            taxRate: 18.0
-          }
-        ],
-        notes: 'Order to be placed on "Shreeraksha Solutions" & Below Address mentioned',
-        terms: '• Above prices are FOR Destination.\n• Please mention our Estimate number on all future correspondence.\n• Please share your valid GSTIN in your Purchase Order.\n• Payment Terms: As agreed (30 Days net).\n• Delivery will be within 3-4 weeks from date of PO.\n• Payment will be 50% advance and balance against delivery.'
-      }
-    ],
-    invoices: [
-      {
-        id: 'inv-019',
-        number: 'SHRKS/Inv/26-27/019',
-        customerId: 'cust-1',
-        attention: 'Mr. Sreekar Nayak',
-        date: '2026-10-04',
-        dueDate: '2026-11-03',
-        placeOfSupply: 'Karnataka (29)',
-        paymentTerms: '30 Days net',
-        status: 'sent',
-        items: [
-          {
-            itemId: 'item-1',
-            name: 'ZODIAC C18',
-            description: '250mmx4.6mm, 5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 6.00,
-            rate: 39286.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-2',
-            name: 'ZODIAC C18',
-            description: '150mmx4.6mm, 3.5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 3.00,
-            rate: 39286.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          },
-          {
-            itemId: 'item-3',
-            name: 'Hypersil BDS C18',
-            description: '250mm x 4.6mm, 5µm',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 1.00,
-            rate: 67778.00,
-            discountType: 'percent',
-            discount: 5.00,
-            taxRate: 18.0
-          }
-        ],
-        total: 472336.00,
-        amountPaid: 0,
-        balanceDue: 472336.00,
-        notes: 'Order to be placed on "Shreeraksha Solutions" & Below Address mentioned',
-        terms: 'Payment due within 30 days.'
-      }
-    ],
-    purchaseOrders: [
-      {
-        id: 'po-005',
-        number: 'SHRKS/PO/26-27/005',
-        vendorId: 'vend-1',
-        attention: 'Mr. Rajesh Pillai',
-        date: '2026-10-02',
-        dueDate: '2026-10-25',
-        placeOfSupply: 'Karnataka (29)',
-        status: 'issued',
-        reference: 'INDENT-OCT-44',
-        paymentTerms: 'Net 30',
-        items: [
-          {
-            itemId: 'item-1',
-            name: 'ZODIAC C18 Raw Assemblies',
-            description: 'Unpacked analytical column blanks (250mm)',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 10.00,
-            rate: 18500.00,
-            discountType: 'percent',
-            discount: 10.00,
-            taxRate: 18.0
-          }
-        ],
-        notes: 'Please dispatch via Blue Dart Express to our Sulya address.',
-        terms: 'Material subject to QC inspection upon delivery.'
-      }
-    ],
-    debitCreditNotes: [
-      {
-        id: 'note-001',
-        number: 'SHRKS/CN/26-27/001',
-        docType: 'CREDIT NOTE',
-        partyType: 'customer',
-        partyId: 'cust-1',
-        customerId: 'cust-1',
-        attention: 'Mr. Sreekar Nayak',
-        date: '2026-10-06',
-        originalInvoiceNumber: 'SHRKS/Inv/26-27/019',
-        placeOfSupply: 'Karnataka (29)',
-        status: 'approved',
-        reason: 'Post-sales volume rebate and calibration discount',
-        items: [
-          {
-            itemId: 'item-1',
-            name: 'Volume Rebate on ZODIAC C18 Columns',
-            description: 'Credit adjusted for Purchase Order bulk commitment',
-            itemType: 'service',
-            hsnCode: '',
-            sacCode: '998313',
-            quantity: 1.00,
-            rate: 10000.00,
-            discountType: 'amount',
-            discount: 0,
-            taxRate: 18.0
-          }
-        ],
-        notes: 'Credit note value will be adjusted against Invoice SHRKS/Inv/26-27/019.'
-      },
-      {
-        id: 'note-002',
-        number: 'SHRKS/DN/26-27/002',
-        docType: 'DEBIT NOTE',
-        partyType: 'vendor',
-        partyId: 'vend-1',
-        vendorId: 'vend-1',
-        attention: 'Mr. Rajesh Pillai',
-        date: '2026-10-08',
-        originalInvoiceNumber: 'TH-INV-8910',
-        placeOfSupply: 'Maharashtra (27)',
-        status: 'approved',
-        reason: 'Transit damage / defective return against PO SHRKS/PO/26-27/005',
-        items: [
-          {
-            itemId: 'item-1',
-            name: 'Transit Damaged Column Blank Rejection',
-            description: 'Damaged fittings returned via courier airway bill 882910',
-            itemType: 'product',
-            hsnCode: '90279090',
-            sacCode: '',
-            quantity: 2.00,
-            rate: 18500.00,
-            discountType: 'percent',
-            discount: 10.00,
-            taxRate: 18.0
-          }
-        ],
-        notes: 'Debit Note issued towards damaged goods rejected during incoming QC.'
-      }
-    ],
+    items: [],
+    customers: [],
+    estimates: [],
+    invoices: [],
+    purchaseOrders: [],
+    debitCreditNotes: [],
     recurring: [],
-    payments: [
-      {
-        id: 'pay-001',
-        paymentNumber: 'PAY-000001',
-        date: '2026-10-05',
-        customerId: 'cust-1',
-        invoiceId: 'inv-019',
-        invoiceNumber: 'SHRKS/Inv/26-27/019',
-        amount: 200000.00,
-        mode: 'bank',
-        reference: 'SBI-NEFT-992104',
-        notes: 'Advance part payment received.'
-      }
-    ],
-    expenses: [
-      {
-        id: 'exp-1',
-        date: '2026-10-02',
-        category: 'Travel',
-        amount: 4500.00,
-        vendor: 'KSRTC Airavat & Local Taxi',
-        notes: 'Technician travel for Manipal Speciality Chemicals onsite installation',
-        billable: true,
-        customerId: 'cust-1',
-        status: 'unbilled'
-      }
-    ],
-    projects: [
-      {
-        id: 'proj-1',
-        name: 'Manipal Lab HPLC Method Development',
-        customerId: 'cust-1',
-        billingMethod: 'hourly',
-        ratePerHour: 3500.00,
-        status: 'active',
-        tasks: [
-          { id: 'task-1', name: 'Column Validation', budgetHours: 20 }
-        ]
-      }
-    ],
+    payments: [],
+    expenses: [],
+    projects: [],
     timesheets: [],
-    activities: [
-      { id: 'act-1', text: 'Quotation SHRKS/Qtn/26-27/019 issued to Manipal Speciality Chemicals Pvt Ltd', time: '2026-10-03 10:30' },
-      { id: 'act-2', text: 'Credit Note SHRKS/CN/26-27/001 approved for ₹ 11,800.00', time: '2026-10-06 14:15' },
-      { id: 'act-3', text: 'Vendor PO SHRKS/PO/26-27/005 issued to Thermo Fisher Scientific', time: '2026-10-02 11:00' }
-    ]
+    activities: []
   };
 
   class Store {
@@ -650,6 +155,23 @@
               org.bankDetails = 'State Bank of India\nA/C: 45666081503\nIFSC: SBIN0016869\nBranch: PARKALA - Bhoodara Tower Main Road, Parkala, Dist: Udupi\nMICR: 576002012';
               this.save();
             }
+          }
+          // Clean demo data migration: ensure complete clean slate for production
+          if (!this.data._clean_production_v2) {
+            this.data.items = [];
+            this.data.customers = [];
+            this.data.estimates = [];
+            this.data.invoices = [];
+            this.data.purchaseOrders = [];
+            this.data.debitCreditNotes = [];
+            this.data.recurring = [];
+            this.data.payments = [];
+            this.data.expenses = [];
+            this.data.projects = [];
+            this.data.timesheets = [];
+            this.data.activities = [];
+            this.data._clean_production_v2 = true;
+            this.save();
           }
         } else {
           this.data = JSON.parse(JSON.stringify(DEFAULT_DATA));
@@ -799,19 +321,19 @@
     getNextNumber(type) {
       const org = this.getOrg();
       if (type === 'invoice') {
-        const count = this.getAll('invoices').length + 20;
+        const count = this.getAll('invoices').length + 1;
         return `${org.invoicePrefix || 'SHRKS/Inv/26-27/'}${String(count).padStart(3, '0')}`;
       } else if (type === 'estimate') {
-        const count = this.getAll('estimates').length + 21;
+        const count = this.getAll('estimates').length + 1;
         return `${org.estimatePrefix || 'SHRKS/Qtn/26-27/'}${String(count).padStart(3, '0')}`;
       } else if (type === 'po') {
-        const count = this.getAll('purchaseOrders').length + 6;
+        const count = this.getAll('purchaseOrders').length + 1;
         return `${org.poPrefix || 'SHRKS/PO/26-27/'}${String(count).padStart(3, '0')}`;
       } else if (type === 'creditNote') {
-        const count = this.getAll('debitCreditNotes').filter(n => n.docType === 'CREDIT NOTE').length + 2;
+        const count = this.getAll('debitCreditNotes').filter(n => n.docType === 'CREDIT NOTE').length + 1;
         return `${org.creditNotePrefix || 'SHRKS/CN/26-27/'}${String(count).padStart(3, '0')}`;
       } else if (type === 'debitNote') {
-        const count = this.getAll('debitCreditNotes').filter(n => n.docType === 'DEBIT NOTE').length + 3;
+        const count = this.getAll('debitCreditNotes').filter(n => n.docType === 'DEBIT NOTE').length + 1;
         return `${org.debitNotePrefix || 'SHRKS/DN/26-27/'}${String(count).padStart(3, '0')}`;
       }
       return 'DOC-' + Date.now();
