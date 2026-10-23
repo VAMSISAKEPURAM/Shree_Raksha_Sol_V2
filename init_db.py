@@ -38,43 +38,64 @@ def main():
     host = os.environ.get('DB_HOST') or env_vars.get('DB_HOST', '127.0.0.1')
     port = int(os.environ.get('DB_PORT') or env_vars.get('DB_PORT', 3306))
     user = os.environ.get('DB_USER') or env_vars.get('DB_USER', 'root')
-    default_pass = os.environ.get('DB_PASSWORD') or env_vars.get('DB_PASSWORD', 'Vamsi@232')
+    has_saved_env = bool(env_vars.get('DB_PASSWORD') or os.environ.get('DB_PASSWORD'))
     db_name = os.environ.get('DB_NAME') or env_vars.get('DB_NAME', 'shreeraksha_db')
 
-    # Ask user or confirm credentials
+    # Display connection target
     print(f"Target Database Host : {host}:{port}")
     print(f"Target Database User : {user}")
     print(f"Target Database Name : {db_name}")
-    
-    use_defaults = input(f"Connect with default credentials (user '{user}')? [Y/n]: ").strip().lower()
-    if use_defaults == 'n':
+
+    if has_saved_env:
+        use_saved = input(f"Connect with saved credentials from .env (user '{user}')? [Y/n]: ").strip().lower()
+        if use_saved != 'n':
+            password = os.environ.get('DB_PASSWORD') or env_vars.get('DB_PASSWORD', '')
+        else:
+            host = get_input("MySQL Host", host)
+            port = int(get_input("MySQL Port", str(port)))
+            user = get_input("MySQL Username", user)
+            password = getpass.getpass(f"MySQL Password for '{user}': ")
+    else:
+        print(f"\n[*] Setting up database on a new PC.")
         host = get_input("MySQL Host", host)
         port = int(get_input("MySQL Port", str(port)))
         user = get_input("MySQL Username", user)
-        pwd = getpass.getpass("MySQL Password: ")
-        password = pwd
-    else:
-        password = default_pass
+        password = getpass.getpass(f"Enter MySQL Password for '{user}': ")
 
-    print(f"\n[*] Connecting to MySQL at {host}:{port}...")
-    try:
-        # Connect to MySQL server without selecting a database first
-        conn = pymysql.connect(
-            host=host,
-            port=port,
-            user=user,
-            password=password,
-            charset='utf8mb4',
-            autocommit=True
-        )
-        cur = conn.cursor()
-        print(" [✓] Connected to MySQL server successfully!")
-    except Exception as e:
-        print(f"\n[ERROR] Could not connect to MySQL server:\n{e}\n")
-        print("Troubleshooting Tips:")
-        print(" 1. Ensure the MySQL service is running (Windows: 'net start MYSQL80' or Services app).")
-        print(" 2. Verify that your username and password are correct.")
-        sys.exit(1)
+    # Connect with retry loop in case of bad password
+    conn = None
+    cur = None
+    for attempt in range(3):
+        print(f"\n[*] Connecting to MySQL at {host}:{port} as user '{user}'...")
+        try:
+            conn = pymysql.connect(
+                host=host,
+                port=port,
+                user=user,
+                password=password,
+                charset='utf8mb4',
+                autocommit=True
+            )
+            cur = conn.cursor()
+            print(" [✓] Connected to MySQL server successfully!")
+            break
+        except pymysql.err.OperationalError as e:
+            if len(e.args) > 0 and e.args[0] == 1045:
+                print(f" [!] Access denied: The password entered is incorrect for user '{user}' on this machine.")
+                if attempt < 2:
+                    password = getpass.getpass(f"Please re-enter the MySQL password for '{user}': ")
+                    continue
+            print(f"\n[ERROR] Could not connect to MySQL server:\n{e}\n")
+            print("Troubleshooting Tips:")
+            print(" 1. Ensure the MySQL service is running (Windows: 'net start MYSQL80' or Services app).")
+            print(" 2. Verify that your username and password are correct.")
+            sys.exit(1)
+        except Exception as e:
+            print(f"\n[ERROR] Could not connect to MySQL server:\n{e}\n")
+            print("Troubleshooting Tips:")
+            print(" 1. Ensure the MySQL service is running (Windows: 'net start MYSQL80' or Services app).")
+            print(" 2. Verify that your username and password are correct.")
+            sys.exit(1)
 
     # 1. Create database if it does not exist
     print(f"[*] Creating database '{db_name}' if not exists...")
