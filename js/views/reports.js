@@ -828,6 +828,7 @@
        4. PAYMENTS RECEIVED TAB
        ========================================================================== */
     renderPaymentsMasterdata() {
+      const org = window.AppStore.getOrg() || {};
       const payments = window.AppStore.getAll('payments') || [];
       const q = this.searchQuery.toLowerCase();
 
@@ -864,7 +865,12 @@
       return `
         <div class="table-card">
           <div class="table-header-toolbar">
-            <h3 class="table-title">Payments Received Masterdata Ledger</h3>
+            <div>
+              <h3 class="table-title">Payments Received Masterdata Ledger</h3>
+              <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 3px;">
+                🏦 <strong>Settlement Account:</strong> ${org.bankName || 'State Bank of India'} &bull; A/C: <span class="font-mono font-bold">${org.accountNumber || '45666081503'}</span> &bull; IFSC: <span class="font-mono font-bold">${org.ifscCode || 'SBIN0016869'}</span> &bull; Branch: ${org.branch || 'PARKALA, Udupi'}
+              </div>
+            </div>
             <span class="table-count-badge">${filtered.length} Payments &bull; Cumulative Received: ₹ ${window.Calculator.formatNumber(totalReceived)}</span>
           </div>
           <div class="table-responsive">

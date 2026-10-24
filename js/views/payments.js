@@ -200,7 +200,16 @@
                 <div style="font-weight:600;">${pay.reference || '—'}</div>
 
                 <div style="font-weight:700;">Deposited Bank:</div>
-                <div style="font-weight:600;">${org.bankName || 'State Bank of India'}</div>
+                <div style="font-weight:700;">${org.bankName || 'State Bank of India'}</div>
+
+                <div style="font-weight:700;">Account No:</div>
+                <div style="font-weight:800; font-family:monospace;">${org.accountNumber || '45666081503'}</div>
+
+                <div style="font-weight:700;">Branch IFSC:</div>
+                <div style="font-weight:800; font-family:monospace;">${org.ifscCode || 'SBIN0016869'}</div>
+
+                <div style="font-weight:700;">Deposit Branch:</div>
+                <div style="font-weight:600; font-size:10.5px; line-height:1.25;">${org.branch || 'PARKALA - Bhoodara Tower Main Road, Parkala, Dist: Udupi'}</div>
               </div>
             </div>
 
@@ -242,8 +251,16 @@
               </div>
 
               <div style="font-size:12px; font-weight:800; margin-bottom:2px;">Notes / Narration:</div>
-              <div style="font-size:11.5px; color:#222222; line-height:1.35;">
+              <div style="font-size:11.5px; color:#222222; line-height:1.35; margin-bottom:10px;">
                 ${pay.notes || 'Received with thanks. Subject to realization of instrument if paid by cheque.'}
+              </div>
+
+              <!-- COMPANY SETTLEMENT BANK DETAILS -->
+              <div style="padding:6px 8px; border:1px solid #000000; background:#f9fafb; font-size:10px; line-height:1.35;">
+                <div style="font-weight:800; text-transform:uppercase; margin-bottom:2px; color:#0b2545;">Official Company Settlement Bank Account:</div>
+                <div><strong>${org.bankName || 'State Bank of India'}</strong> &bull; A/C Name: <strong>${org.accountName || 'SHREERAKSHA SOLUTIONS'}</strong></div>
+                <div>A/C No: <strong style="font-family:monospace;">${org.accountNumber || '45666081503'}</strong> &bull; IFSC: <strong style="font-family:monospace;">${org.ifscCode || 'SBIN0016869'}</strong> &bull; MICR: <strong>${org.micrCode || '576002012'}</strong></div>
+                <div style="color:#555555; font-size:9.5px;">Branch: ${org.branch || 'PARKALA - Bhoodara Tower Main Road, Parkala, Dist: Udupi'}</div>
               </div>
             </div>
 

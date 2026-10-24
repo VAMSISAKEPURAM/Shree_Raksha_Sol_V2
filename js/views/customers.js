@@ -575,6 +575,7 @@
       const c = window.AppStore.getById('customers', customerId);
       if (!c) return;
 
+      const org = window.AppStore.getOrg() || {};
       const invoices = (window.AppStore.getAll('invoices') || []).filter(i => i.customerId === customerId);
       const quotes = (window.AppStore.getAll('estimates') || []).filter(e => e.customerId === customerId);
       const pos = (window.AppStore.getAll('purchaseOrders') || []).filter(p => p.vendorId === customerId);
@@ -632,6 +633,27 @@
                 <div class="text-lg font-medium text-secondary">${notes.length} Active Notes</div>
               </div>
             </div>
+          </div>
+
+          <!-- COMPANY BANKING REMITTANCE DETAILS FOR PAYMENTS -->
+          <div style="background: rgba(11, 37, 69, 0.04); padding: 1rem 1.25rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; border: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <div style="font-weight: 800; font-size: 0.9rem; color: var(--text-main); display: flex; align-items: center; gap: 0.4rem;">
+                <span>🏦</span> Company Bank Account for Wire Remittance (NEFT / RTGS)
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 3px;">
+                <strong>Bank:</strong> ${org.bankName || 'State Bank of India'} &bull; 
+                <strong>A/C Name:</strong> ${org.accountName || 'SHREERAKSHA SOLUTIONS'} &bull; 
+                <strong>A/C No:</strong> <span class="font-mono font-bold" style="color: var(--primary);">${org.accountNumber || '45666081503'}</span> &bull; 
+                <strong>IFSC:</strong> <span class="font-mono font-bold">${org.ifscCode || 'SBIN0016869'}</span>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">
+                Branch: ${org.branch || 'PARKALA - Bhoodara Tower Main Road, Parkala, Dist: Udupi'} (MICR: ${org.micrCode || '576002012'})
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="navigator.clipboard.writeText('Bank: ${org.bankName || 'State Bank of India'}\\nA/C Name: ${org.accountName || 'SHREERAKSHA SOLUTIONS'}\\nA/C No: ${org.accountNumber || '45666081503'}\\nIFSC: ${org.ifscCode || 'SBIN0016869'}\\nBranch: ${org.branch || 'PARKALA'}'); window.Toast.show('Bank details copied to clipboard!', 'success');">
+              📋 Copy Bank Details
+            </button>
           </div>
 
           <!-- CONTACT PERSONS (UP TO 10) -->

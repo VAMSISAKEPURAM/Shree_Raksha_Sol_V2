@@ -198,6 +198,7 @@
     },
 
     saveOrgProfile() {
+      const org = window.AppStore.getOrg() || {};
       const currencyMap = {
         USD: '$', EUR: '€', GBP: '£', INR: '₹', CAD: '$', AUD: '$', JPY: '¥'
       };

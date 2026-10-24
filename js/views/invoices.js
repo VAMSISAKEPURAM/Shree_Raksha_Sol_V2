@@ -228,6 +228,15 @@
             </div>
           </div>
 
+          <div style="background: rgba(11, 37, 69, 0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: 1.25rem;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 3px; display: flex; align-items: center; gap: 0.35rem;">
+              <span>🏦</span> Destination Deposit Account: <strong>${org.bankName || 'State Bank of India'}</strong>
+            </div>
+            <div style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.35;">
+              A/C No: <strong class="font-mono">${org.accountNumber || '45666081503'}</strong> &bull; IFSC: <strong class="font-mono">${org.ifscCode || 'SBIN0016869'}</strong> &bull; Branch: ${org.branch || 'PARKALA, Udupi'}
+            </div>
+          </div>
+
           <div class="form-grid">
             <div class="form-group">
               <label class="form-label required">Amount Received (₹)</label>
@@ -544,6 +553,16 @@
             <div class="form-group">
               <label class="form-label">Terms & Conditions</label>
               <textarea id="ied-terms" class="form-control" rows="2">${existing ? existing.terms : org.defaultTerms}</textarea>
+            </div>
+          </div>
+
+          <!-- ATTACHED COMPANY BANK DETAILS PREVIEW -->
+          <div style="background: rgba(11, 37, 69, 0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-top: 0.5rem;">
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 3px; display: flex; align-items: center; gap: 0.35rem;">
+              <span>🏦</span> Company Bank Account Attached to this Invoice (for Customer Wire Remittance):
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.35;">
+              <strong>${org.bankName || 'State Bank of India'}</strong> &bull; A/C Name: <strong>${org.accountName || 'SHREERAKSHA SOLUTIONS'}</strong> &bull; A/C No: <strong class="font-mono">${org.accountNumber || '45666081503'}</strong> &bull; IFSC: <strong class="font-mono">${org.ifscCode || 'SBIN0016869'}</strong> &bull; Branch: ${org.branch || 'PARKALA, Udupi'}
             </div>
           </div>
         </form>

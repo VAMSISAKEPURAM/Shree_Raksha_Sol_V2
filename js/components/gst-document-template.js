@@ -337,6 +337,61 @@
      * Renders Notes, Terms & Conditions, Bank Details, and Authorized Signature
      */
     renderNotesAndTermsBlock(doc, ctx) {
+      // Determine document-specific terms if not explicitly overridden on the document
+      let termsListHtml = '';
+      if (doc.terms && doc.terms.trim()) {
+        const lines = doc.terms.split('\n').map(l => l.trim()).filter(Boolean);
+        termsListHtml = lines.map(line => {
+          const cleanLine = line.replace(/^[•\*\-\d\.]+\s*/, '');
+          const isSub = line.startsWith('*') || line.startsWith('  *');
+          return `<li class="${isSub ? 'sr-sub-bullet' : ''}">${cleanLine}</li>`;
+        }).join('');
+      } else if (ctx.docType === 'TAX INVOICE') {
+        termsListHtml = `
+          <li>Please remit wire payments via RTGS / NEFT to our SBI Bank Account mentioned alongside.</li>
+          <li>Please mention our Invoice number on all payment remittances and correspondence.</li>
+          <li>Payment Terms: As agreed (${doc.paymentTerms || '30 Days net'}).</li>
+          <li>Goods once sold will not be accepted back or exchanged.</li>
+          <li>Interest @ 18% p.a. will be levied on payments delayed beyond the credit due date.</li>
+          <li>Subject to Udupi / Sulya jurisdiction.</li>
+        `;
+      } else if (ctx.docType === 'PURCHASE ORDER') {
+        termsListHtml = `
+          <li>Please supply material strictly as per specifications in this Purchase Order.</li>
+          <li>Material subject to incoming inspection and QC acceptance upon delivery.</li>
+          <li>Please mention our PO number on the delivery challan and invoice.</li>
+          <li>Payment Terms: As agreed (${doc.paymentTerms || 'Net 30'}).</li>
+        `;
+      } else if (ctx.docType === 'CREDIT NOTE' || ctx.docType === 'DEBIT NOTE') {
+        termsListHtml = `
+          <li>This ${ctx.docType} is issued in compliance with Indian GST regulations.</li>
+          <li>Value will be adjusted against outstanding balance or future billing.</li>
+          <li>Reason: ${doc.reason || 'Material adjustment / returned goods'}.</li>
+        `;
+      } else {
+        // Default Quotation terms
+        termsListHtml = `
+          <li>Above prices are FOR Destination.</li>
+          <li>Please mention our Estimate number on all future correspondence.</li>
+          <li>Please share your valid GSTIN in your Purchase Order.</li>
+          <li>Payment Terms: As agreed (${doc.paymentTerms || '30 Days net'}).</li>
+          <li>In case of Refurbished requirement</li>
+          <li class="sr-sub-bullet">The defective part need to be returned - against delivery.</li>
+          <li>Delivery will be within 3-4 weeks from date of PO.</li>
+          <li class="sr-sub-bullet">Goods indicated above in stock are accurate as of the quote date.</li>
+          <li class="sr-sub-bullet">If goods are out of stock at the time of release of PO, standard lead time would apply.</li>
+          <li>Payment will be 50% advance and balance against delivery.</li>
+        `;
+      }
+
+      const bankHeader = ctx.docType === 'TAX INVOICE'
+        ? 'COMPANY BANKING DETAILS (FOR RTGS / NEFT WIRE PAYMENT)'
+        : (ctx.docType === 'PURCHASE ORDER'
+            ? 'COMPANY BANKING DETAILS'
+            : (ctx.docType.includes('NOTE')
+                ? 'COMPANY BANKING DETAILS (FOR SETTLEMENT)'
+                : 'COMPANY BANKING DETAILS (FOR RTGS / NEFT)'));
+
       return `
         <!-- NOTES & TERMS BLOCK (NOTES/TERMS + BANK/SIGN) -->
         <div class="sr-notes-terms-block">
@@ -346,22 +401,13 @@
 
             <div class="sr-terms-label">Terms & Conditions</div>
             <ul class="sr-terms-list">
-              <li>Above prices are FOR Destination.</li>
-              <li>Please mention our Estimate number on all future correspondence.</li>
-              <li>Please share your valid GSTIN in your Purchase Order.</li>
-              <li>Payment Terms: As agreed (${doc.paymentTerms || '30 Days net'}).</li>
-              <li>In case of Refurbished requirement</li>
-              <li class="sr-sub-bullet">The defective part need to be returned - against delivery.</li>
-              <li>Delivery will be within 3-4 weeks from date of PO.</li>
-              <li class="sr-sub-bullet">Goods indicated above in stock are accurate as of the quote date.</li>
-              <li class="sr-sub-bullet">If goods are out of stock at the time of release of PO, standard lead time would apply.</li>
-              <li>Payment will be 50% advance and balance against delivery.</li>
+              ${termsListHtml}
             </ul>
           </div>
 
           <div class="sr-bank-sign-col">
             <div class="sr-bank-box">
-              <div class="sr-bank-header">COMPANY BANKING DETAILS (FOR RTGS / NEFT)</div>
+              <div class="sr-bank-header">${bankHeader}</div>
               <table class="sr-bank-table">
                 <tbody>
                   <tr>
@@ -374,11 +420,11 @@
                   </tr>
                   <tr>
                     <td class="sr-bank-k">Account No:</td>
-                    <td class="sr-bank-v">${ctx.org.accountNumber || '45666081503'}</td>
+                    <td class="sr-bank-v font-mono">${ctx.org.accountNumber || '45666081503'}</td>
                   </tr>
                   <tr>
                     <td class="sr-bank-k">IFSC Code:</td>
-                    <td class="sr-bank-v">${ctx.org.ifscCode || 'SBIN0016869'}</td>
+                    <td class="sr-bank-v font-mono">${ctx.org.ifscCode || 'SBIN0016869'}</td>
                   </tr>
                   <tr>
                     <td class="sr-bank-k">Branch:</td>
@@ -386,7 +432,7 @@
                   </tr>
                   <tr>
                     <td class="sr-bank-k">MICR Code:</td>
-                    <td class="sr-bank-v">${ctx.org.micrCode || '576002012'}</td>
+                    <td class="sr-bank-v font-mono">${ctx.org.micrCode || '576002012'}</td>
                   </tr>
                 </tbody>
               </table>
